@@ -24,47 +24,43 @@ const colorPickerOpt = [
 class App extends Component {
   state = {
     showModal: false,
-    name: "",
-    tag: "",
-    inputValue: "aaa",
-    todos: [],
   };
-  componentDidMount() {
-    // axios.get('http://localhost:4040/todos')
-    //   .then(response => {
-    //     console.log(response);
-    //   });
+  // componentDidMount() {
+  //   // axios.get('http://localhost:4040/todos')
+  //   //   .then(response => {
+  //   //     console.log(response);
+  //   //   });
 
-    const todos = localStorage.getItem("todos");
-    const parseTodos = JSON.parse(todos);
-    if (parseTodos) {
-      this.setState({ todos: parseTodos });
-    }
-  }
+  //   const todos = localStorage.getItem("todos");
+  //   const parseTodos = JSON.parse(todos);
+  //   if (parseTodos) {
+  //     this.setState({ todos: parseTodos });
+  //   }
+  // }
 
-  componentDidApdate(prevProps, prevState) {
-    if (this.state.todos !== prevState.todos) {
-      console.log("Обновилось поле");
-      localStorage.setItem("todos", JSON.stringify(this.state.todos));
-    }
-  }
+  // componentDidApdate(prevProps, prevState) {
+  //   if (this.state.todos !== prevState.todos) {
+  //     console.log("Обновилось поле");
+  //     localStorage.setItem("todos", JSON.stringify(this.state.todos));
+  //   }
+  // }
 
-  addTodo = (text) => {
-    const todo = {
-      id: shortid.generate(),
-      text: text,
-      completed: false,
-    };
-    this.setState((prevState) => ({
-      todos: [todo, ...prevState.todos],
-    }));
-  };
+  // addTodo = (text) => {
+  //   const todo = {
+  //     id: shortid.generate(),
+  //     text: text,
+  //     completed: false,
+  //   };
+  //   this.setState((prevState) => ({
+  //     todos: [todo, ...prevState.todos],
+  //   }));
+  // };
 
-  deleteTodo = (todoId) => {
-    this.setState((prevState) => ({
-      todos: prevState.todos.filter((todo) => todo.id !== todoId),
-    }));
-  };
+  // deleteTodo = (todoId) => {
+  //   this.setState((prevState) => ({
+  //     todos: prevState.todos.filter((todo) => todo.id !== todoId),
+  //   }));
+  // };
 
   toggleCompleted = (todoId) => {
     console.log(todoId);
@@ -105,12 +101,12 @@ class App extends Component {
   // }
 
   render() {
-    const { todos, showModal } = this.state;
-    const totalTodo = todos.length;
-    const complitedTodo = todos.reduce(
-      (acc, todo) => (todo.completed ? acc + 1 : acc),
-      0
-    );
+    const { showModal } = this.state;
+    // const totalTodo = todos.length;
+    // const complitedTodo = todos.reduce(
+    //   (acc, todo) => (todo.completed ? acc + 1 : acc),
+    //   0
+    // );
     return (
       <div className="App">
         <Counter />
@@ -122,7 +118,7 @@ class App extends Component {
           <Modal onClose={this.toggleModal}>
             {/* <h1>Это модальное окно</h1>
             <p>Lorem Ipsum";</p> */}
-            <TodoEditor onSubmit={this.addTodo} />
+            <TodoEditor />
             <button type="button" onClick={this.toggleModal}>
               Закрыть модалку
             </button>
@@ -155,16 +151,16 @@ class App extends Component {
           </label>
         </form> */}
 
-        <div>
+        {/* <div>
           <p>Общее кол-во {totalTodo}</p>
           <p> Кол-во выполненных {complitedTodo}</p>
-        </div>
+        </div> */}
 
-        <TodoList
+        {/* <TodoList
           todos={todos}
           onDeleteTodo={this.deleteTodo}
           onToggleCompleted={this.toggleCompleted}
-        />
+        /> */}
         {/* <ColorPicker options={colorPickerOpt} /> */}
       </div>
     );
