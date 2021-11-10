@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Filter from "./TodoEditor/Filter";
 // import axios from 'axios';
 // import ColorPicker from "./ColorPicker";
 
@@ -92,6 +93,18 @@ class App extends Component {
     this.setState({ [name]: value });
   };
 
+  // changeFilter = (event) => {
+  //   this.setState({
+  //     filter: event.currentTarget.value,
+  //   });
+  // };
+  // getVisibleTodos = (params) => {
+  //   const normalizedFiltered = this.state.filter.toLowerCase();
+  //   return this.state.todos.filter(({ text }) =>
+  //     text.toLowerCase().includes(normalizedFiltered)
+  //   );
+  // };
+
   // handleNameChange = (event) => {
   //   this.setState({ name: event.currentTarget.value });
   // }
@@ -110,6 +123,7 @@ class App extends Component {
     return (
       <div className="App">
         <Counter />
+        <Filter />
         <button type="button" onClick={this.toggleModal}>
           Открыть модалку
         </button>
@@ -156,11 +170,7 @@ class App extends Component {
           <p> Кол-во выполненных {complitedTodo}</p>
         </div> */}
 
-        {/* <TodoList
-          todos={todos}
-          onDeleteTodo={this.deleteTodo}
-          onToggleCompleted={this.toggleCompleted}
-        /> */}
+        <TodoList />
         {/* <ColorPicker options={colorPickerOpt} /> */}
       </div>
     );
