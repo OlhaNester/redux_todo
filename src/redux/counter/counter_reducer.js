@@ -14,6 +14,7 @@ const valueReducer = (state = 10, { type, payload }) => {
   }
 };
 const stepReducer = (state = 5, action) => state;
+
 export default combineReducers({
   value: valueReducer,
   step: stepReducer,
